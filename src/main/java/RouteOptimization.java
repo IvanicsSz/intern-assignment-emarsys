@@ -17,17 +17,16 @@ public class RouteOptimization {
         fromFurthestToClosest();
     }
 
-
-    public boolean isFurthestLocation(Location location) {
-        return (!this.locations.stream().map(Location::getCloserLocation).collect(Collectors.toList()).contains(location));
-    }
-
     public List<Location> getLocations() {
         return locations;
     }
 
     public List<Location> getOptimalRoute() {
         return optimalRoute;
+    }
+
+    public boolean isFurthestLocation(Location location) {
+        return (!locations.stream().map(Location::getCloserLocation).collect(Collectors.toList()).contains(location));
     }
 
     private void fromFurthestToClosest() {
