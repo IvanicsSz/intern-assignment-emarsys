@@ -11,15 +11,14 @@ public class RouteOptimization {
     private List<Location> optimalRoute = new ArrayList<>();
 
 
-    public RouteOptimization(Location... locations)  {
+    public RouteOptimization(Location... locations) {
         if (locations == null) throw new NullPointerException("Null is not a valid Location");
         this.locations = Arrays.asList(locations);
         fromFurthestToClosest();
-
     }
 
 
-    public boolean isFurthestLocation(Location location){
+    public boolean isFurthestLocation(Location location) {
         return (!this.locations.stream().map(Location::getCloserLocation).collect(Collectors.toList()).contains(location));
     }
 
@@ -31,8 +30,7 @@ public class RouteOptimization {
         return optimalRoute;
     }
 
-
-    private void fromFurthestToClosest(){
+    private void fromFurthestToClosest() {
         for (Location location : locations) {
             if (isFurthestLocation(location)) {
                 closerTown(location);
@@ -47,7 +45,6 @@ public class RouteOptimization {
             closerTown(location.getCloserLocation());
         }
     }
-
 
 
 }

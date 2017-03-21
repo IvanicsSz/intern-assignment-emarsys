@@ -1,4 +1,3 @@
-
 public class Location {
 
     private String name;
@@ -20,9 +19,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Town{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Town{ name = " + name + " }";
     }
 }
 

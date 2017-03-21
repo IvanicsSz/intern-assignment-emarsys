@@ -12,14 +12,12 @@ public class RouteOptimizationTest {
 
     private RouteOptimization routeOptimization;
 
-
     private Location u;
     private Location v;
     private Location w;
     private Location x;
     private Location y;
     private Location z;
-
 
     @Before
     public void setUp() throws Exception {
@@ -31,17 +29,18 @@ public class RouteOptimizationTest {
         z = new Location("z");
 
         routeOptimization = new RouteOptimization();
-
     }
 
     @Test
     public void testRouteOptimizationWithEmptyParameter() throws Exception {
+
         assertNotNull(routeOptimization.getLocations());
     }
 
     @Test
     public void testRouteOptimizationWithParameters() throws Exception {
         routeOptimization = new RouteOptimization(u);
+
         assertEquals(routeOptimization.getLocations().get(0), u);
         assertEquals(routeOptimization.getLocations().size(), 1);
     }
@@ -74,13 +73,11 @@ public class RouteOptimizationTest {
         List<Location> optimal = Arrays.asList(z, w, v, y, u, x);
 
         assertEquals(routeOptimization.getOptimalRoute(), optimal);
-
     }
 
     @Test(expected = NullPointerException.class)
     public void testNullPointerExceptionInParameters() throws Exception {
         routeOptimization = new RouteOptimization(null);
-
     }
 
     @After
@@ -92,7 +89,6 @@ public class RouteOptimizationTest {
         y = null;
         z = null;
         routeOptimization = null;
-
     }
 
 }
