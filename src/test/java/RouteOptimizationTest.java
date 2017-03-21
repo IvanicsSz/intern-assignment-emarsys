@@ -47,7 +47,7 @@ public class RouteOptimizationTest {
     }
 
     @Test
-    public void testIsFurthestLocation() throws Exception{
+    public void testIsFurthestLocation() throws Exception {
         x.setCloserLocation(u);
         routeOptimization = new RouteOptimization(u, x);
 
@@ -56,12 +56,25 @@ public class RouteOptimizationTest {
     }
 
     @Test
-    public void testGetOptimalRoute() throws Exception{
+    public void testGetOptimalRouteForTwoLocations() throws Exception {
         x.setCloserLocation(u);
         routeOptimization = new RouteOptimization(u, x);
         List<Location> optimal = Arrays.asList(u, x);
 
         assertEquals(routeOptimization.getOptimalRoute(), optimal);
+    }
+
+    @Test
+    public void testGetOptimalRouteForMoreLocations() throws Exception {
+        v.setCloserLocation(w);
+        w.setCloserLocation(z);
+        x.setCloserLocation(u);
+        y.setCloserLocation(v);
+        routeOptimization = new RouteOptimization(u, v, w, x, y, z);
+        List<Location> optimal = Arrays.asList(z, w, v, y, u, x);
+
+        assertEquals(routeOptimization.getOptimalRoute(), optimal);
+
     }
 
     @After
