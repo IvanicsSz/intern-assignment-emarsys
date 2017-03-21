@@ -2,6 +2,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 
@@ -45,11 +48,20 @@ public class RouteOptimizationTest {
 
     @Test
     public void testIsFurthestLocation() throws Exception{
-        routeOptimization = new RouteOptimization(u, x);
         x.setCloserLocation(u);
+        routeOptimization = new RouteOptimization(u, x);
 
         assertTrue(routeOptimization.isFurthestLocation(x));
         assertFalse(routeOptimization.isFurthestLocation(u));
+    }
+
+    @Test
+    public void testGetOptimalRoute() throws Exception{
+        x.setCloserLocation(u);
+        routeOptimization = new RouteOptimization(u, x);
+        List<Location> optimal = Arrays.asList(u, x);
+
+        assertEquals(routeOptimization.getOptimalRoute(), optimal);
     }
 
     @After
