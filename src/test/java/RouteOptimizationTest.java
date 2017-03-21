@@ -75,6 +75,25 @@ public class RouteOptimizationTest {
         assertEquals(routeOptimization.getOptimalRoute(), optimal);
     }
 
+    @Test
+    public void testGetOptimalRouteForXYZ() throws Exception {
+
+        y.setCloserLocation(z);
+        routeOptimization = new RouteOptimization(x, y, z);
+        List<Location> optimal = Arrays.asList(z, y, x);
+
+        assertEquals(routeOptimization.getOptimalRoute(), optimal);
+    }
+
+    @Test
+    public void testGetOptimalRouteForIndependentLocations() throws Exception {
+
+        routeOptimization = new RouteOptimization(u, v, w, x, y, z);
+        List<Location> optimal = Arrays.asList(z, y, x, w, v, u);
+
+        assertEquals(routeOptimization.getOptimalRoute(), optimal);
+    }
+
     @Test(expected = NullPointerException.class)
     public void testNullPointerExceptionInParameters() throws Exception {
         routeOptimization = new RouteOptimization(null);
