@@ -2,8 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 
 public class RouteOptimizationTest {
@@ -42,8 +41,15 @@ public class RouteOptimizationTest {
         routeOptimization = new RouteOptimization(u);
         assertEquals(routeOptimization.getLocations().get(0), u);
         assertEquals(routeOptimization.getLocations().size(), 1);
+    }
 
+    @Test
+    public void testIsFurthestLocation() throws Exception{
+        routeOptimization = new RouteOptimization(u, x);
+        x.setCloserLocation(u);
 
+        assertTrue(routeOptimization.isFurthestLocation(x));
+        assertFalse(routeOptimization.isFurthestLocation(u));
     }
 
     @After
