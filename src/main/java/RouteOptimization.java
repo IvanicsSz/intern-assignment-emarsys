@@ -31,11 +31,7 @@ public class RouteOptimization {
     }
 
     private void fromFurthestToClosest() {
-        for (Location location : locations) {
-            if (isFurthestLocation(location)) {
-                closerTown(location);
-            }
-        }
+        locations.stream().filter(this::isFurthestLocation).forEach(this::closerTown);
         Collections.reverse(optimalRoute);
     }
 
