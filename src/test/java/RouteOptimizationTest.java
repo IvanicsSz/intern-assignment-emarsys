@@ -77,6 +77,12 @@ public class RouteOptimizationTest {
 
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testNullPointerExceptionInParameters() throws Exception {
+        routeOptimization = new RouteOptimization(null);
+
+    }
+
     @After
     public void tearDown() throws Exception {
         u = null;

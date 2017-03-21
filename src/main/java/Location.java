@@ -1,3 +1,4 @@
+
 public class Location {
 
     private String name;
@@ -5,11 +6,8 @@ public class Location {
     private Location closerLocation = null;
 
     public Location(String name) {
+        if (name == null) throw new NullPointerException("Null is not a valid location name");
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Location getCloserLocation() {
